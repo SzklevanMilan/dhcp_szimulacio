@@ -108,6 +108,32 @@ namespace dhcp_szimulacio
                 Console.WriteLine(ex.Message);
             }
         }
+
+        static void Feladat(string parancs)
+        {
+            /* parancs = "request;D19313570A82"
+             * először csak "request" paranccsal foglalkozunk
+             * Megnézzük,hogy "request"-e?
+             * Ki kell szedni a MAC címet a parancsból
+             */
+            if (parancs.Contains("request"))
+            {
+                
+            }
+            else
+            {
+                Console.WriteLine("Nem oké.");
+            }
+        }
+
+        static void Feladatok()
+        {
+            foreach (var command in commands)
+            {
+                Feladat(command);
+            }
+        }
+
         static void Main(string[] args)
         {
             BeolvasExcluded();
@@ -115,11 +141,12 @@ namespace dhcp_szimulacio
             BeolvasList(commands, "test.csv");
             BeolvasDictionary(dhcp,"dhcp.csv");
             BeolvasDictionary(reserved, "reserved.csv");
+            Feladat("Van request");
             
-            foreach (var e in commands)
-            {
-                Console.WriteLine(e);
-            }
+            //foreach (var e in commands)
+            //{
+            //    Console.WriteLine(e);
+            //}
 
             Console.WriteLine("\nVége...");
             Console.ReadLine();
